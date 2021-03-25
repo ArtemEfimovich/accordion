@@ -2,16 +2,18 @@ import React from "react";
 import Button from "../OnOff/OnOff";
 
 
-type AccordionPropsType = {
+export type AccordionPropsType = {
     titleValue: string
     collapsed: boolean
+    onChange: () => void
 }
 
 function Accordion(props: AccordionPropsType) {
+    debugger
     return (
         <div>
             <div>
-                <AccordionTitle title={props.titleValue}/>
+                <AccordionTitle title={props.titleValue} onChange={props.onChange}/>
                 {!props.collapsed && <AccordionBody/>}
 
             </div>
@@ -23,12 +25,13 @@ function Accordion(props: AccordionPropsType) {
 
 type  AccordionTitlePropsType = {
     title: string
+    onChange: () => void
 }
 
 function AccordionTitle(props: AccordionTitlePropsType) {
     return (
         <div>
-            <h3>{props.title}</h3>
+            <h3 onClick={props.onChange}>{props.title}</h3>
         </div>
 
     )
